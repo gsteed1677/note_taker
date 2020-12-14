@@ -16,4 +16,4 @@ router.delete("/api/notes/", function(req,res) {
         res.json({ok: true});
 });
 
-module.exports = router;
+module.exports = api;
