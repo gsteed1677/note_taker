@@ -4,6 +4,7 @@ const fs = require("fs");
 const data = JSON.parse(fs.readFileSync("./Develop/db/db.json", "utf8"));
 
 router.get("/api/notes/", function(req,res) {
+        console.log(req)
         res.json(note_data);
 });
 
@@ -13,6 +14,7 @@ router.get("/api/notes/:id", function(req, res) {
 });
 
 router.post("/api/notes/", function(req,res) {
+        console.log(req.body)
         let newNote = req.body;
         let specialId = (data.length).toString();
 
