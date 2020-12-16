@@ -1,19 +1,20 @@
 
 const router = require("express").Router();
 const fs = require("fs");
-const data = JSON.parse(fs.readFileSync("./Develop/db/db.json", "utf8"));
+const data = require("../db/db.json")
+// const data = JSON.parse(fs.readFileSync("../db/db.json", "utf8"));
 
-router.get("/api/notes/", function(req,res) {
+router.get("/notes", function(req,res) {
         console.log(req)
-        res.json(note_data);
+        res.json(data);
 });
 
-router.get("/api/notes/:id", function(req, res) {
+router.get("/notes/:id", function(req, res) {
         res.json(data[Number(req.params.id)]);
 
 });
 
-router.post("/api/notes/", function(req,res) {
+router.post("/notes", function(req,res) {
         console.log(req.body)
         let newNote = req.body;
         let specialId = (data.length).toString();
@@ -28,7 +29,7 @@ router.post("/api/notes/", function(req,res) {
         res.json(data);    
 });
 
-router.delete("/api/notes/:id", function(req,res) {
+router.delete("/notes/:id", function(req,res) {
         let noteId = req.params.id;
         let newId = 0;
         console.log(`Deleting note with id ${noteId}`);
